@@ -1,0 +1,67 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Book Management System - Onion Architecture" id="0">
+    <mxGraphModel dx="1174" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="user" parent="1" style="whiteSpace=wrap;html=1;" value="User" vertex="1">
+          <mxGeometry height="50" width="120" x="130" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="client" parent="1" style="whiteSpace=wrap;html=1;" value="Client / Browser" vertex="1">
+          <mxGeometry height="60" width="200" x="90" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="presentation" parent="1" style="whiteSpace=wrap;html=1;" value="Presentation Layer (API)&lt;br&gt;&lt;br&gt;POST /books&lt;br&gt;GET /books&lt;br&gt;PUT /books/{id}&lt;br&gt;DELETE /books/{id}" vertex="1">
+          <mxGeometry height="100" width="320" x="30" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="application" parent="1" style="whiteSpace=wrap;html=1;" value="Application Layer&lt;br&gt;&lt;br&gt;Use Cases (e.g., CreateBook)&lt;br&gt;DTOs &amp; Application Services" vertex="1">
+          <mxGeometry height="80" width="320" x="30" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="domain" parent="1" style="whiteSpace=wrap;html=1;" value="Domain Layer (Core)&lt;br&gt;&lt;br&gt;Book Entity&lt;br&gt;IBookRepository (Interface)" vertex="1">
+          <mxGeometry height="80" width="320" x="30" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="infrastructure" parent="1" style="whiteSpace=wrap;html=1;" value="Infrastructure Layer&lt;br&gt;&lt;br&gt;BookRepository (Impl)&lt;br&gt;External Adapters" vertex="1">
+          <mxGeometry height="80" width="200" x="650" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="database" parent="1" style="whiteSpace=wrap;html=1;" value="Database&lt;br&gt;&lt;br&gt;Books Table" vertex="1">
+          <mxGeometry height="80" width="160" x="670" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="external" parent="1" style="whiteSpace=wrap;html=1;dashed=1;" value="External Service&lt;br&gt;(Future)" vertex="1">
+          <mxGeometry height="70" width="160" x="670" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="queue" parent="1" style="whiteSpace=wrap;html=1;dashed=1;" value="Queue / Background Job&lt;br&gt;(Future)" vertex="1">
+          <mxGeometry height="70" width="160" x="980" y="465" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="user" style="endArrow=classic;html=1;" target="client" value="Uses">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Updated to include both HTTP Request and HTTP Response edges -->
+        <mxCell id="e2_req" edge="1" parent="1" source="client" style="endArrow=classic;html=1;exitX=0.25;exitY=1;entryX=0.25;entryY=0;" target="presentation" value="HTTP Request">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2_res" edge="1" parent="1" source="presentation" style="endArrow=classic;html=1;exitX=0.75;exitY=0;entryX=0.75;entryY=1;" target="client" value="HTTP Response">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="e3" edge="1" parent="1" source="presentation" style="endArrow=classic;html=1;" target="application" value="Invokes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="application" style="endArrow=classic;html=1;" target="domain" value="Uses Core Logic">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="infrastructure" style="endArrow=classic;html=1;dashed=1;" target="domain" value="Implements (Dependency Inversion)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="infrastructure" style="endArrow=classic;html=1;" target="database" value="Queries">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="infrastructure" style="endArrow=classic;html=1;dashed=1;" target="external" value="API Call">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="infrastructure" style="endArrow=classic;html=1;dashed=1;" target="queue" value="Publishes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

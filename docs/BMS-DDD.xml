@@ -1,0 +1,37 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Bookstore Architecture" id="0">
+    <mxGraphModel dx="1468" dy="2647" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="client" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="CLIENT" vertex="1">
+          <mxGeometry height="60" width="240" x="1070" y="-1100" as="geometry" />
+        </mxCell>
+        <mxCell id="presentation" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="PRESENTATION&#xa;&#xa;Controllers / HTTP / JSON" vertex="1">
+          <mxGeometry height="100" width="440" x="970" y="-980" as="geometry" />
+        </mxCell>
+        <mxCell id="application" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="APPLICATION&#xa;&#xa;CreateBook&#xa;GetBook&#xa;UpdateBook&#xa;DeleteBook&#xa;PlaceOrder" vertex="1">
+          <mxGeometry height="170" width="440" x="970" y="-820" as="geometry" />
+        </mxCell>
+        <mxCell id="domain" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="DOMAIN&#xa;&#xa;Book&#xa;Order&#xa;Customer&#xa;Money&#xa;Inventory&#xa;&#xa;Business Rules / Invariants" vertex="1">
+          <mxGeometry height="200" width="440" x="970" y="-590" as="geometry" />
+        </mxCell>
+        <mxCell id="infrastructure" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="INFRASTRUCTURE&#xa;&#xa;PostgreSQL&#xa;Repository Implementations&#xa;HTTP Clients&#xa;Payment Provider&#xa;Email" vertex="1">
+          <mxGeometry height="160" width="440" x="970" y="-330" as="geometry" />
+        </mxCell>
+        <mxCell id="edge1" edge="1" parent="1" source="client" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;" target="presentation" value="HTTP">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge2" edge="1" parent="1" source="presentation" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;" target="application" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge3" edge="1" parent="1" source="application" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;" target="domain" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge4" edge="1" parent="1" source="infrastructure" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;dashed=1;" target="domain" value="implements interfaces">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
